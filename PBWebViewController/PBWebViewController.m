@@ -248,7 +248,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self finishLoad];
-    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if (!self.title)
+        self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.URL = self.webView.request.URL;
 }
 
